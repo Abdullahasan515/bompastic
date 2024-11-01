@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const twilio = require('twilio');
 const cors = require('cors');
-
+app.use(cors()); // السماح بالطلبات من جميع المصادر
 const app = express();
 const port = 3000;
 require('dotenv').config(); // تحميل المتغيرات البيئية
