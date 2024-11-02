@@ -4,18 +4,20 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const twilio = require('twilio');
 const cors = require('cors');
-app.use(cors()); // السماح بالطلبات من جميع المصادر
-const app = express();
+
+const app = express(); // يجب أن تكون هذه السطر هنا
 const port = 3000;
-require('dotenv').config(); // تحميل المتغيرات البيئية
+
+// إعدادات CORS
+app.use(cors()); // السماح بالطلبات من جميع المصادر
+
+// إعدادات body-parser
+app.use(bodyParser.json()); // لتحليل JSON في الطلبات
+
 // استبدل هذه القيم بمفاتيح حساب Twilio الخاصة بك باستخدام المتغيرات البيئية
 const accountSid = process.env.TWILIO_ACCOUNT_SID; // SID الخاص بحساب Twilio
 const authToken = process.env.TWILIO_AUTH_TOKEN; // توكن حساب Twilio
 const client = new twilio(accountSid, authToken);
-
-// إعدادات body-parser
-app.use(bodyParser.json());
-app.use(cors()); // استخدام CORS للسماح بالطلبات من مصادر مختلفة
 
 // نقطة النهاية لإرسال رسالة WhatsApp
 app.post('/send-whatsapp', (req, res) => {
