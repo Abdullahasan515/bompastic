@@ -1,18 +1,19 @@
-// server.js
 require('dotenv').config(); // تحميل المتغيرات البيئية
 const express = require('express');
 const bodyParser = require('body-parser');
 const twilio = require('twilio');
 const cors = require('cors');
 
-const app = express(); // يجب أن تكون هذه السطر هنا
-const port = 3000;
+const app = express();
+const port = process.env.PORT || 3000; // استخدام المنفذ من البيئة إذا كان متاحًا
 
 // إعدادات CORS
-app.use(cors()); // السماح بالطلبات من جميع المصادر
+app.use(cors({
+    origin: 'https://bompastic-qg8r86r87-importants-projects-9680af2c.vercel.app' // رابط Vercel الخاص بك
+}));
 
 // إعدادات body-parser
-app.use(bodyParser.json()); // لتحليل JSON في الطلبات
+app.use(bodyParser.json());
 
 // استبدل هذه القيم بمفاتيح حساب Twilio الخاصة بك باستخدام المتغيرات البيئية
 const accountSid = process.env.TWILIO_ACCOUNT_SID; // SID الخاص بحساب Twilio
@@ -35,7 +36,7 @@ app.post('/send-whatsapp', (req, res) => {
         })
         .catch((error) => {
             console.error('Error sending message: ', error);
-            res.status(500).send('Error sending message');
+            res.status(500).send(`Error sending message: ${error.message || 'Unknown error'}`);
         });
 });
 
