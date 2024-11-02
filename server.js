@@ -7,15 +7,15 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000; // استخدام المنفذ من البيئة إذا كان متاحًا
 
-// إعدادات CORS
+// إعدادات CORS للسماح بالاتصال من رابط Vercel الخاص بك
 app.use(cors({
     origin: 'https://bompastic-qg8r86r87-importants-projects-9680af2c.vercel.app' // رابط Vercel الخاص بك
 }));
 
-// إعدادات body-parser
+// إعدادات body-parser لتحليل JSON في الطلبات
 app.use(bodyParser.json());
 
-// استبدل هذه القيم بمفاتيح حساب Twilio الخاصة بك باستخدام المتغيرات البيئية
+// بيانات حساب Twilio باستخدام المتغيرات البيئية
 const accountSid = process.env.TWILIO_ACCOUNT_SID; // SID الخاص بحساب Twilio
 const authToken = process.env.TWILIO_AUTH_TOKEN; // توكن حساب Twilio
 const client = new twilio(accountSid, authToken);
@@ -31,11 +31,11 @@ app.post('/send-whatsapp', (req, res) => {
             to: phone
         })
         .then((message) => {
-            console.log('Message sent: ', message.sid);
+            console.log('Message sent successfully: ', message.sid);
             res.status(200).send('Message sent successfully');
         })
         .catch((error) => {
-            console.error('Error sending message: ', error);
+            console.error('Error sending message via Twilio: ', error);
             res.status(500).send(`Error sending message: ${error.message || 'Unknown error'}`);
         });
 });
